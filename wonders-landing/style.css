@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-black: #202020;
+    --primary-blue: #0578ff;
+    --white: #fff;
+    --primary-grey: #90a3bf;
+    --good-yellow: #ffc501;
+    --bg-gray: #f5f5f5;
+    --font-family: "Poppins", sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+}
+
+h2 {
+    color: var(--primary-black);
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.wrapper {
+    width: 1312px;
+    margin: 0 auto;
+}
+
+/* ACHIEVMENTS */
+#achievements {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 59.5px 0;
+}
+
+#achievements > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#achievements > div > div > p {
+    text-align: center;
+}
+
+#achievements > div > div > p:first-child {
+    font-size: 50px;
+    font-weight: 700;
+}
+#achievements > div > div > p:last-child {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+/* GALLERY */
+#gallery {
+    padding: 130px 0;
+}
+
+#gallery > div {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+#gallery > div > div {
+    display: grid;
+    grid-template-columns: 528px 305px 416px;
+    grid-template-rows: 376px 88px 264px;
+    gap: 24px;
+}
+
+#gallery > div > div > img {
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+#gallery > div > div > img:first-child {
+    width: 528px; 
+    height: 376px;
+}
+
+#gallery > div > div > img:nth-child(2) {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    width: 305px; 
+    height: 489px;
+}
+
+#gallery > div > div > img:nth-child(3) {
+    grid-row: 1 / span 2;
+    grid-column: 3;
+    width: 416px; 
+    height: 489px;
+}
+
+#gallery > div > div > img:nth-child(4) {
+    grid-row: 2 / span 2;
+    width: 528px; 
+    height: 376px;
+}
+
+#gallery > div > div > img:last-child {
+    grid-row: 3 / span 1;
+    grid-column: 2 / span 2;
+    width: 753px; 
+    height: 264px;
+}
+
+
+@media (max-width: 1312px) {
+    .wrapper {
+        width: 704px;
+    }
+    #achievements > div {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 105px);
+        row-gap: 40px;
+    }
+        #gallery > div > div {
+    display: grid;
+    grid-template-columns: repeat(2, 340px);
+    grid-template-rows: 380px 362px 425px 225px;
+    }
+    #gallery > div > div > img:first-child {
+    width: 704px; 
+    height: 380px;
+    }
+    #gallery > div > div > img:nth-child(2) {
+    grid-row: 3;
+    grid-column: 1;
+    width: 340px; 
+    height: 425px;
+    }
+    #gallery > div > div > img:nth-child(3) {
+    grid-row: 3;
+    grid-column: 2;
+    width: 340px; 
+    height: 425px;
+    }
+    #gallery > div > div > img:nth-child(4) {
+    grid-row: 2;
+    grid-column: 1 / span 2;
+    width: 704px; 
+    height: 362px;
+    }   
+    #gallery > div > div > img:last-child {
+    grid-row: 4;
+    grid-column: 1 / span 2;
+    width: 704px; 
+    height: 225px;
+    }
+}
+
+@media (max-width: 704px) {
+    .wrapper {
+        width: 320px;
+    }
+    #achievements > div {
+        row-gap: 30px;
+        column-gap: 40px;
+    }
+    #achievements > div > div > p:first-child {
+    font-size: 40px;
+    }
+    #achievements > div > div > p:last-child {
+        font-size: 16px;
+    }
+}
+
+/* надо создать репозиторий и коммитить всё */
+/* доделать под мобилку */
+
