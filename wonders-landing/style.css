@@ -388,6 +388,10 @@ h2 {
     justify-content: space-between;
 }
 
+#faqs summary::-webkit-details-marker {
+  display: none;
+}
+
 summary::after {
     content: '+';
     display: inline-block;
