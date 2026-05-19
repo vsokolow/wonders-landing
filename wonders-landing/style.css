@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
-
 * {
     padding: 0;
     margin: 0;
@@ -20,18 +18,220 @@ body {
     font-family: var(--font-family);
 }
 
+h1 {
+    font-size: 64px;
+    font-weight: 700;
+}
+
 h2 {
     color: var(--primary-black);
     font-size: 64px;
     font-weight: 700;
 }
-
 .wrapper {
     width: 1312px;
     margin: 0 auto;
 }
 
-/* ACHIEVMENTS */
+.gradient-bg-zone {
+    background: linear-gradient(
+        to top,
+        #F5F5F5 0%,
+        #DDECFF 50%,
+        #F5F5F5 100%
+    );
+}
+
+
+
+            /* HEADER */
+
+
+.header > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32.5px 32px;
+
+}
+.header > div > img:first-child {
+    display: none;
+}
+.header > div > img:nth-child(2) {
+    display: inline;
+}
+.header > div > img:last-child {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+}
+.header > div > img {
+    width: 295px;
+    height: 51px;
+}
+.header ul {
+    display: flex;
+    list-style: none;
+    gap: 96px;
+    font-size: 20px;
+}
+.header ul > li:last-child {
+    font-weight: 500;
+    cursor: pointer;
+}
+.header a {
+    text-decoration: none;
+    color: var(--primary-black);
+}
+
+
+            /* TICKETS */
+
+
+#tickets > div {
+    display: flex;
+    justify-content: space-between;
+    padding: 64px 64px 128px 64px;
+
+    gap: 32px;
+}
+
+#tickets > div > div {
+    width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+#tickets > div > div > p {
+    height: 48px;
+    padding-right: 36px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: normal;
+    /* line-height: 100%; */
+}
+
+#tickets form > div:first-child {
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 24px;
+    border-radius: 16px;
+}
+
+#tickets form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+#tickets form .counter_block {
+    display: flex;
+    width: 88px;
+    height: 36px;
+    gap: 6px;
+    padding: 7px 0 7px;
+}
+
+#tickets form .counter_block > div {
+    display: flex;
+    align-items: center;
+}
+
+#tickets form .counter_block > div > input {
+    width: 24px;
+    height: 22px;
+    min-width: 0;
+    flex-shrink: 1;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#tickets form .counter_block > div > button {
+    border: none;
+    background-color: var(--white);
+}
+
+#tickets form .counter_block > div > .increase-btn {
+    color: var(--primary-blue);
+}
+
+#tickets form > div:nth-child(2) input,
+#tickets form > div:nth-child(3) input {
+    padding: 16px 24px;
+    border-radius: 16px;
+    border: none;
+    width: 304px;
+}
+
+#tickets form > div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+#tickets form > div:nth-child(2) label {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#tickets form > div:nth-child(3) {
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#tickets form > div:nth-child(3) > div {
+    display: flex;
+    gap: 32px;
+}
+
+#tickets .counter_block > span {
+    display: contents;
+    width: 24px;
+    height: 22px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#tickets form .depart-return > input {
+    position: relative;
+    background-image: url(./assets/images/icons/Calendar.png);
+    background-repeat: no-repeat;
+    background-position: 24px center;
+}
+
+#tickets form .depart-return > input::placeholder {
+    padding-left: 36px;
+}
+
+#tickets form > button {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    padding: 16px 0;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+ #tickets > div > img {
+    width: 640px;
+    height: 704px;
+}
+
+
+
+            /* ACHIEVMENTS */
+
 #achievements {
     background-color: var(--primary-blue);
     color: var(--white);
@@ -58,7 +258,8 @@ h2 {
 }
 
 
-/* GALLERY */
+            /* GALLERY */
+
 #gallery {
     padding: 130px 0;
 }
@@ -114,67 +315,647 @@ h2 {
 }
 
 
+            /* APPS */
+
+#apps {
+    background-color: var(--good-yellow);
+}
+
+#apps > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#apps > div > h2 {
+    text-align: center;
+    font-size: 62px;
+    padding: 116px 0 60px;
+}
+
+#apps > div > div {
+    display: flex;
+    flex-direction: row;
+    column-gap: 125.3px; 
+    padding-bottom: 128px;
+}
+
+#apps > div > div > img {
+        height: 65px;
+    }
+
+
+            /* FAQS */
+
+#faqs > div > div {
+    display: flex;
+    flex-direction: column;
+    padding: 128px 177px;
+}
+
+#faqs > div > div > h2 {
+    padding-bottom: 40px;
+}
+
+#faqs > div > div > details > summary {
+    color: var(--primary-black);
+    font-size: 18px;
+    font-weight: 500;
+    height: 56px;
+    display: flex;
+    align-items: center;
+}
+
+#faqs > div > div > details > p {
+    color: var(--primary-black);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#faqs > div > div > details:not(:last-child) {
+    border-bottom: 1px solid var(--primary-black);
+}
+
+.content {
+    padding: 16px 0;
+
+}
+
+#faqs summary {
+    list-style: none;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+summary::after {
+    content: '+';
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+details[open] summary::after {
+    transform: rotate(45deg);
+}
+
+
+            /* CONTACTS */
+
+
+#contacts {
+    display: flex;
+    align-content: center;
+}
+
+.contacts-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
+    width: 640px;
+    border: 1px solid #20202080;
+    border-radius: 10px; 
+    text-align: center;
+    background-color: var(--white);
+    margin: 0 auto;
+}
+
+.contacts-title {
+    font-size: 64px;
+    font-weight: 700;
+    padding-bottom: 30px;
+    height: 107px;
+}
+
+.contacts-phone,
+.contacts-email {
+    font-size: 28px;
+    font-weight: 400;
+    height: 39px;
+}
+
+.contacts-email {
+    padding-top: 8px;
+}
+
+.contacts-addres {
+    padding-top: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    height: 84px;
+}
+
+            /* BOTTOM COLOR BLOCK */
+
+#bottomColorBlock {
+    width: 100%;
+    height: 404px;
+    margin-top: -270px;
+    background-color: var(--primary-blue);
+}
+
+
+
+            /* FOOTERS */
+
+#footer {
+    height: 472px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    margin-top: -1px;
+    padding: 64px 64px 164px;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-container {
+    height: 244px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 244px);
+    gap: 32px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: start;
+    gap: 15px;
+}
+
+.footer-logo > p {
+    font-size: 34px;
+    font-weight: 400;
+    padding: 7.5px 0 9.5px;
+
+}
+
+.footer-logo > img {
+    padding: 7.5px 0 9.5px;
+}
+
+.footer-nav > div {
+    font-size: 20px;
+    font-weight: 600;
+}
+.footer-about,
+.footer-community,
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+}
+
+.footer-list {
+    height: 188px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.footer-copyright {
+    margin-top: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+
+}
+
+
+
+            /* MEDIA 1312   */
+
 @media (max-width: 1312px) {
     .wrapper {
         width: 704px;
     }
+    .header > div > img:last-child {
+        display: inline;
+    }
+    .header nav {
+        display: none;
+        background-color: var(--primary-blue);
+        color: var(--white);
+        padding: 64px 20px;
+
+        position: absolute;
+        top: 116px;
+        left: 0;
+        width: 100%;
+
+    }
+    .header a {
+        color: var(--white);
+    }
+    .header ul {
+        flex-direction: column;
+        font-size: 48px;
+    }
+
+    #tickets {
+        padding: 64px 96px 128px 32px;
+    }
+    
+    #tickets > div {
+        justify-content: center;
+    }
+
+    #tickets > div > img {
+        display: none;
+    }
+
     #achievements > div {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 105px);
         row-gap: 40px;
     }
-        #gallery > div > div {
-    display: grid;
-    grid-template-columns: repeat(2, 340px);
-    grid-template-rows: 380px 362px 425px 225px;
+    #gallery > div > div {
+        display: grid;
+        grid-template-columns: repeat(2, 340px);
+        grid-template-rows: 380px 362px 425px 225px;
     }
     #gallery > div > div > img:first-child {
-    width: 704px; 
-    height: 380px;
+        width: 704px; 
+        height: 380px;
     }
     #gallery > div > div > img:nth-child(2) {
-    grid-row: 3;
-    grid-column: 1;
-    width: 340px; 
-    height: 425px;
+        grid-row: 3;
+        grid-column: 1;
+        width: 340px; 
+        height: 425px;
     }
     #gallery > div > div > img:nth-child(3) {
-    grid-row: 3;
-    grid-column: 2;
-    width: 340px; 
-    height: 425px;
+        grid-row: 3;
+        grid-column: 2;
+        width: 340px; 
+        height: 425px;
     }
     #gallery > div > div > img:nth-child(4) {
-    grid-row: 2;
-    grid-column: 1 / span 2;
-    width: 704px; 
-    height: 362px;
+        grid-row: 2;
+        grid-column: 1 / span 2;
+        width: 704px; 
+        height: 362px;
     }   
     #gallery > div > div > img:last-child {
-    grid-row: 4;
-    grid-column: 1 / span 2;
-    width: 704px; 
-    height: 225px;
+        grid-row: 4;
+        grid-column: 1 / span 2;
+        width: 704px; 
+        height: 225px;
+    }
+    #apps >div > h2 {
+        font-size: 40px;
+        padding-top: 128px;
+    }
+    #apps > div > div {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 65px);
+        row-gap: 30px;
+        column-gap: 49px;
+        width: 462px;
+    }
+    #apps > div > div > img:first-child {
+        grid-column: 1 / 3;
+        justify-self: center;
+        width: 220px;
+    }
+    #apps > div > div > img:nth-child(2) {
+        grid-row: 2;
+        grid-column: 1;
+        width: 217px;
+    }
+    #apps > div > div > img:last-child {
+        grid-row: 2;
+        grid-column: 2;
+        width: 195px;
+    }
+
+
+    #bottomColorBlock {
+    height: 372px;
+    }
+
+
+
+
+    #faqs > div > div {
+        display: flex;
+        flex-direction: column;
+        padding: 128px 32px;
+    }
+
+
+    #footer {
+    height: 546px;
+    padding: 64px 32px 147px;
+    }
+
+    .footer-container {
+    height: 335px;
+    display: flex;
+    flex-direction: column;
+    }
+
+    .footer-nav {
+    gap: 0;
+}
+
+    .footer-copyright {
+    height: 48px;
     }
 }
+
+
+
+            /* MEDIA 704 */
 
 @media (max-width: 704px) {
     .wrapper {
         width: 320px;
+    }  
+
+    .header {
+        padding: 32.5px 20px;
+    }   
+
+    /* .header > div > {
+        width: 100%;
+        margin: 0 auto;
+    } */
+
+    .header > div > img:first-child {
+        display: inline;
+        width: 73px;
+        height: 34px;
     }
+    .header > div > img:nth-child(2) {
+        display: none;
+    }
+    .header nav {
+        top: 99px;
+    }
+    .header ul {
+        font-size: 32px;
+        gap: 64px;
+    }
+
+
+
+    /* tickets доделать под мобилку */
+
+     #tickets {
+        padding: 0;
+    }
+
+    #tickets > div {
+        width: 360px;
+        height: 883px;
+        padding: 24px 20px 128px 20px;
+        gap: 0;
+    }
+
+    #tickets > div > div {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        /* justify-content: space-between;
+        gap: 32px; */
+    }
+    #tickets > div > div > h1 {
+        height: 96px;
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+
+
+
+    /* !!!!!разобраться с текстом - неправильный перенос слов!!!!! */
+
+
+    #tickets > div > div > p {
+        height: auto;
+        font-size: 11px;
+        font-weight: 400;
+        /* надо выровнять текст внутри тега */
+    
+    }
+
+
+    #tickets form > div:first-child {
+    display: flex;
+    /* justify-content:; */
+    align-items: center;
+    padding: 8px 3px;
+    gap: 25.5px;
+}
+
+   #tickets form > div:nth-child(2) {
+        flex-direction: column;
+        /* display: flex;
+        justify-content: space-between;
+        font-weight: 500; */
+    }
+
+    #tickets form > div:nth-child(2) label {
+        height: 89px;
+    }
+
+
+    #tickets .depart-return {
+        flex-direction: column;
+    }
+
+    #tickets form > div:nth-child(2) input,
+    #tickets form > div:nth-child(3) input {
+        width: 320px;
+    }
+
+    /* #tickets form {
+        flex-direction: column;
+    } */
+
+
+
+
+
+
+
+    /*  */
+
+  
     #achievements > div {
         row-gap: 30px;
         column-gap: 40px;
     }
     #achievements > div > div > p:first-child {
-    font-size: 40px;
+        font-size: 40px;
     }
     #achievements > div > div > p:last-child {
         font-size: 16px;
     }
+    #achievements > div > div:first-child {
+        order: 1;
+    }
+    #achievements > div > div:nth-child(2) {
+        order: 0;
+    }
+    #achievements > div > div:nth-child(3) {
+        order: 3;
+    }
+    #achievements > div > div:last-child {
+        order: 2;
+    }
+
+
+
+    #gallery {
+        padding: 64px 0;
+    }
+    #gallery > div > div {
+        display: flex;
+        flex-direction: column;
+    }
+    #gallery > div > h2 {
+        font-size: 32px;
+        font-weight: 700;
+    }
+    #gallery > div > div > img {
+        max-width: 100%; 
+    }
+    #gallery > div > div > img:first-child {
+        height: 220px;
+    }
+    #gallery > div > div > img:nth-child(2) {
+        order: 3;
+        height: 472px;
+    }
+    #gallery > div > div > img:nth-child(3) {
+        order: 4;
+        height: 637px;
+    }
+    #gallery > div > div > img:nth-child(4) {
+        order: 2;
+        height: 209px;
+    }   
+    #gallery > div > div > img:last-child {
+        order: 5;
+        height: 141px;
+    }  
+
+    
+
+    #apps > div > h2 {
+        font-size: 32px;
+        padding-top: 32px;
+        padding-bottom: 0;
+    }
+
+    #apps > div > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 30px;
+        padding-bottom: 32px;
+    }
+    
+
+
+    #faqs > div > div {
+        display: flex;
+        flex-direction: column;
+        /* height: 842px; */
+        padding: 64px 20px;
+    }
+
+    #faqs > div > div > h2 {
+        padding-bottom: 32px;
+    }
+
+
+
+
+    #bottomColorBlock {
+        height: 372px;
+        margin-top: -246px;
 }
 
-/* надо создать репозиторий и коммитить всё */
-/* доделать под мобилку */
+
+    .contacts-card {
+        padding: 60px 20px; 
+        width: 320px;
+        height: 341px;
+        /* margin-top: -501px;  */
+    }
+
+    .contacts-title {
+        font-size: 36px;
+        font-weight: 700;
+        padding-bottom: 30px;
+        height: 107px;
+    }
+
+    .contacts-phone,
+    .contacts-email {
+        font-size: 20px;
+        height: 39px;
+    }
+
+    .contacts-email {
+        padding-top: 8px;
+    }
+
+
+
+    #footer {
+        height: 819px;
+        padding: 64px 26px 0 20px;
+}
+
+    .footer-container {
+        /* display: none; */
+        height: 603px;
+        flex-direction: column;
+}
+
+    .footer-nav {
+        display: grid;
+        grid-template-columns: repeat(2, 140px);
+        gap: 40px;
+        row-gap: 24px;
+    }
+
+    .footer-logo {
+        display: flex;
+        align-items: start;
+        gap: 15px;
+    }
+
+    .footer-copyright {
+        font-size: 16px;
+        font-weight: 600;
+        padding-bottom: 64px;
+    }
+
+    .mobile-hide {
+        display: none;
+    }
+    
+}
 

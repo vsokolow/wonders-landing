@@ -7,52 +7,243 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-   
-    <header></header>
-
-    <main>
-        <section id="tickets"></section>
-
-        <section id="achievements">
+    <div class="gradient-bg-zone">
+        <header class="header">
             <div class="wrapper">
-                <div>
-                    <p>68k+</p>
-                    <p>Track kilometers</p>
-                </div>
-                <div>
-                    <p>1.4M+</p>
-                    <p>Photos Taken</p>
-                </div>
-                <div>
-                    <p>23M+</p>
-                    <p>Altitude Gained</p>
-                </div>
-                <div>
-                    <p>165+</p>
-                    <p>Years of history</p>
-                </div>
-            </div>    
-        </section>
+                <img src="./assets/images/icons/site-logo.svg" alt="Logo">
+                <img src="./assets/images/icons/site-logo-full.svg" alt="Logo full">
 
-        <section id="gallery">
-            <div class="wrapper">
-                <h2>Glimpses of Glory</h2>
+                <nav>
+                    <ul>
+                        <li><a href="#">Mobile App</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li>Sign Up</li>
+                    </ul>
+                </nav>
+
+                <img src="./assets/images/icons/Menu.png" alt="">
+            </div>
+            </header>
+
+        <main>
+            <section id="tickets">
+                <div class="wrapper">
                     <div>
-                        <img src="./assets/images/picture-1.jpg" alt="">
-                        <img src="./assets/images/picture-3.jpg" alt="">
-                        <img src="./assets/images/picture-4.jpg" alt="">
-                        <img src="./assets/images/picture-2.jpg" alt="">
-                        <img src="./assets/images/picture-5.jpg" alt="">
+                        <h1>Skip The Climbing, Catch the Bus</h1>
+                        <p>We sell tickets to the best seats in the house – houses on wheels, that is!  Get ready for jaw-dropping views without breaking a sweat.</p>
+                        <form>
+                            <div>
+                                <label>
+                                    <input type="radio">
+                                    Round trip
+                                </label>
+                                <label>
+                                    <input type="radio">
+                                    One Way
+                                </label>
+
+                                <div class="counter_block">
+                                    <img src="./assets/images/icons/person solid.png" alt="">
+                                    <div>
+                                        <button id="decrease-btn" type="button">                <img src="./assets/images/icons/Minus.png" alt="">
+                                        </button>
+                                        <input id="input" type="text" value="1">
+                                        <button id="increase-btn" type="button">
+                                            <img src="./assets/images/icons/Plus.png" alt="">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label>
+                                    Departure
+                                    <input type="text" placeholder="Your City/Station">
+                                </label>
+
+                                <label>
+                                    Arrival
+                                    <input type="text" placeholder="Where to?">
+                                </label>
+                            </div>
+
+                            <div>
+                                <p>Pick your lucky day</p>
+                                <div class="depart-return">
+                                    <input type="text" placeholder="Depart">
+                                    <input type="text" placeholder="Return">
+                                </div>
+                            </div>
+
+                            <button>Find My Alpine Ride</button>
+                        </form>
                     </div>
+                        <img src="./assets/images/hero-image.png" alt="">
+                    </div>
+            </section>
+
+            <section id="achievements">
+                <div class="wrapper">
+                    <div>
+                        <p>68k+</p>
+                        <p>Track kilometers</p>
+                    </div>
+                    <div>
+                        <p>1.4M+</p>
+                        <p>Photos Taken</p>
+                    </div>
+                    <div>
+                        <p>23M+</p>
+                        <p>Altitude Gained</p>
+                    </div>
+                    <div>
+                        <p>165+</p>
+                        <p>Years of history</p>
+                    </div>
+                </div>    
+            </section>
+
+            <section id="gallery">
+                <div class="wrapper">
+                    <h2>Glimpses of Glory</h2>
+                        <div>
+                            <img src="./assets/images/picture-1.jpg" alt="">
+                            <img src="./assets/images/picture-3.jpg" alt="">
+                            <img src="./assets/images/picture-4.jpg" alt="">
+                            <img src="./assets/images/picture-2.jpg" alt="">
+                            <img src="./assets/images/picture-5.jpg" alt="">
+                        </div>
+                </div>
+            </section>
+
+        </div>
+
+        <section id="apps">
+            <div class="wrapper">
+                <h2>Free downloads app now!</h2>
+                <div>
+                    <img src="./assets/images/apps/google-play.png" alt="">
+                    <img src="./assets/images/apps/huawei-app-gallery.png" alt="">
+                    <img src="./assets/images/apps/app-store.png" alt="">
+                </div>
             </div>
         </section>
 
-        <section id="apps"></section>
-        <section id="faqs"></section>
-        <section id="contacts"></section>
+        <section id="faqs">
+            <div class="wrapper">
+                <div class="faqs-container">
+                    <h2>FAQs.</h2>
+                    <details>
+                        <summary>Alpine Bus Journeys?</summary>
+                            <div class="content">
+                                <p>Forget crowded cities! Alpine Bus Journeys are your comfy seat with panoramic windows to breathtaking mountain vistas, charming villages, and air so fresh it might make you yodel (please don't, unless you're outside). It's transportation with a side of unparalleled scenery (and maybe a hairpin turn).</p>
+                            </div>
+                    </details>
+                    <details>
+                        <summary>What about seating options?</summary>
+                            <div class="content">
+                                <p>Generally, you'll find comfy standard seats (great views, great value, maybe great new friends) and perhaps slightly better seats with extra legroom. All offer a front-row seat to the greatest show on Earth – the Alps!</p>
+                            </div>
+                    </details>
+                    <details>
+                        <summary>What is the Alpine Wallet?</summary>
+                            <div class="content">
+                                <p>It's your digital stash of cash that makes booking bus tickets smoother than a perfectly paved mountain road. Load it up and watch your travel dreams become reality faster than a bus goes downhill.</p>
+                            </div>
+                    </details>
+                    <details>
+                        <summary>My Altitude Score?</summary>
+                            <div class="content">
+                                <p>Your loyalty points for cruising the mountain roads! Higher scores might get you priority boarding (less elbowing for the best window seat!) or maybe just bragging rights among fellow peak-passengers who prefer four wheels.</p>
+                            </div>
+                    </details>
+                    <details>
+                        <summary>Why a Bus Station Fee?</summary>
+                            <div class="content">
+                                <p>A small contribution to ensure the station is clean, has reasonably fresh mountain air (filtered from bus fumes), and enough signs pointing you towards your bus, not away from it. Sometimes covers the cost of moving rogue bicycles.</p>
+                            </div>
+                    </details>
+                    <details>
+                        <summary>Why are buses late?</summary>
+                            <div class="content">
+                                <p>Sometimes it's the weather (snow happens!), sometimes a sudden flock of particularly slow-moving sheep on the road, and sometimes the driver just had to stop for a photo of that view. Or maybe they got stuck behind a tractor. Welcome to "Mountain Road Time"!</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Peak Season Surcharge?</summary>
+                            <div class="content">
+                                <p>It's the little extra you pay to enjoy the authentic experience of sharing breathtaking views with a lot of your closest friends (who you haven't met yet) while strategically placing your bag in the overhead compartment. Guarantees a vibrant, energetic journey!</p>
+                            </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacts">     
+            <div class="wrapper">
+                <div class="contacts-card">
+                    <div class="contacts-title">Contact us</div>
+                        <div class="contacts-phone">+41 98765 43210</div>
+                            <div class="contacts-email">hello@peakpasses.eu</div>
+                                <div class="contacts-addres">Alpenblick Strasse 7,<br>
+                                    12345 Edelweiss Town, Alps</div>
+                </div>
+            </div>     
+        </section>
+
+
+        <section id="bottomColorBlock">
+            <div class="wrapper"></div>
+        </section>
+
+
     </main>
 
-    <footer></footer>
+    <footer id="footer">
+        <div class="wrapper">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="./assets/images/icons/Logo-white.png" alt="">
+                    <p>Wonders</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-about">
+                        <div class="footer-title">About</div>
+                        <ul class="footer-list">
+                            <li><a href="#">How it works</a></li>
+                            <li><a href="#">Featured</a></li>
+                            <li><a href="#">Partnership</a></li>
+                            <li><a href="#">Bussiness Relation</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-community">
+                        <div class="footer-title">Community</div>
+                        <ul class="footer-list">
+                            <li><a href="#">Events</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Podcast</a></li>
+                            <li><a href="#">Invite a friend</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-socials">
+                        <div class="footer-title">Socials</div>
+                        <ul class="footer-list">
+                            <li><a href="#">Discord</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Facebook</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">English: © 2025 Peak Passages. <br class="mobile-hide">
+                All Rights Reserved (Especially the Window Seats).
+            </div>
+        </div>
+    </footer>
 
 
     <script src="./script.js"></script>
