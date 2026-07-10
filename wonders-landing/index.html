@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wonders</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
     <div class="gradient-bg-zone">
@@ -22,7 +23,7 @@
                     </ul>
                 </nav>
 
-                <img src="./assets/images/icons/Menu.png" alt="">
+                <img src="./assets/images/icons/Menu.png" alt="menu_icon" class="menu_icon">
             </div>
             </header>
 
@@ -71,8 +72,8 @@
                             <div>
                                 <p>Pick your lucky day</p>
                                 <div class="depart-return">
-                                    <input type="text" placeholder="Depart">
-                                    <input type="text" placeholder="Return">
+                                    <input id="departure" type="text" placeholder="Depart">
+                                    <input id="returnDate" type="text" placeholder="Return">
                                 </div>
                             </div>
 
@@ -244,7 +245,7 @@
         </div>
     </footer>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="./script.js"></script>
 </body>
 </html>

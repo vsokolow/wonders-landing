@@ -1,20 +1,89 @@
 const menuIcon = document.querySelector('.menu_icon');
 const navMenu = document.querySelector('.header nav');
 
-// navMenu.style.display = 'none'; // скрывает меню
+const departureInput = document.getElementById('departure');
+const returnInput = document.getElementById('returnDate');
 
-// menuIcon.addEventListener('click', () => {
-//     // navMenu.computedStyleMap.display = 'none' ? navMenu.computedStyleMap.display = 'block' : navMenu.computedStyleMap.display = 'none'
-//     // navMenu.style.display = navMenu.style.display === 'none' ? 'block' : 'none';
 
-//     if (navMenu.style.display === 'none') {
-//        navMenu.style.display = 'block' 
-//     } else {
-//         navMenu.style.display = 'none'
-//     }
-// })
 
-// надо разобраться с логикой - у меня display: 'none' не совпадает с кодом Нелли!!!!! + .menu_icon у меня вообще отсутствует + c 41-ой минуты выяснилось, что накосясили и начали исправлять!!! 
+
+
+
+
+// ОТКРЫТИЕ-ЗАКРЫТИЕ ВЫПАДАЮЩЕГО МЕНЮ
+menuIcon.addEventListener('click', () => {
+  navMenu.classList.toggle('menu_active')
+})
+
+// DATE PICKER
+const picker = flatpickr(departureInput, {
+    mode: "range",
+    showMonths: 2,
+    locale: "ru",
+    dateFormat: "d.m.Y",
+    closeOnSelect: false,   // не закрываем сразу — закрытие по кнопке Apply
+    minDate: "today",
+
+    onOpen: function () {
+      departureInput.classList.add('active');
+      returnInput.classList.add('active');
+    },
+    onClose: function () {
+      departureInput.classList.remove('active');
+      returnInput.classList.remove('active');
+    },
+
+    // Главное: при любом изменении выбора — раскладываем даты по двум полям
+    onChange: function (selectedDates, dateStr, instance) {
+      departureInput.value = selectedDates[0]
+        ? instance.formatDate(selectedDates[0], "d.m.Y")
+        : "";
+      returnInput.value = selectedDates[1]
+        ? instance.formatDate(selectedDates[1], "d.m.Y")
+        : "";
+    },
+
+    onReady: function (selectedDates, dateStr, instance) {
+      addFooter(instance);
+    }
+});
+
+// Клик по "Return" открывает тот же календарь, что и "Departure"
+returnInput.addEventListener("click", () => picker.open());
+
+function addFooter(instance) {
+    const footer = document.createElement("div");
+    footer.className = "fp-footer";
+
+    const resetBtn = document.createElement("button");
+    resetBtn.type = "button";
+    resetBtn.className = "fp-reset";
+    resetBtn.textContent = "Reset";
+    resetBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      instance.clear();
+      departureInput.value = "";
+      returnInput.value = "";
+    });
+
+    const applyBtn = document.createElement("button");
+    applyBtn.type = "button";
+    applyBtn.className = "fp-apply";
+    applyBtn.textContent = "Apply";
+    applyBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      instance.close();
+    });
+
+    footer.appendChild(resetBtn);
+    footer.appendChild(applyBtn);
+    instance.calendarContainer.appendChild(footer);
+}
+
+
+
+
+
 
 // FAQs
 
@@ -78,5 +147,3 @@ allDetailsItems.forEach(item => {
         }
     })
 });
-// item - это один конкретный <details>
-// На каждый <details> вешаем слушатель события toggle
