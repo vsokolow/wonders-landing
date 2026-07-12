@@ -6,14 +6,13 @@ const returnInput = document.getElementById('returnDate');
 
 
 
-
-
-
-
 // ОТКРЫТИЕ-ЗАКРЫТИЕ ВЫПАДАЮЩЕГО МЕНЮ
 menuIcon.addEventListener('click', () => {
   navMenu.classList.toggle('menu_active')
 })
+
+// СЧЕТЧИК
+
 
 // DATE PICKER
 const picker = flatpickr(departureInput, {
@@ -41,6 +40,9 @@ const picker = flatpickr(departureInput, {
       returnInput.value = selectedDates[1]
         ? instance.formatDate(selectedDates[1], "d.m.Y")
         : "";
+
+        departureInput.style.backgroundImage = selectedDates[0] ? 'none' : '';
+        returnInput.style.backgroundImage = selectedDates[1] ? 'none' : '';
     },
 
     onReady: function (selectedDates, dateStr, instance) {
@@ -64,6 +66,9 @@ function addFooter(instance) {
       instance.clear();
       departureInput.value = "";
       returnInput.value = "";
+
+      departureInput.style.backgroundImage = '';
+        returnInput.style.backgroundImage = '';
     });
 
     const applyBtn = document.createElement("button");
@@ -75,8 +80,8 @@ function addFooter(instance) {
       instance.close();
     });
 
-    footer.appendChild(resetBtn);
-    footer.appendChild(applyBtn);
+    // footer.appendChild(resetBtn);
+    // footer.appendChild(applyBtn);
     instance.calendarContainer.appendChild(footer);
 }
 
