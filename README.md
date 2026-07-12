@@ -7,7 +7,6 @@
 
 - Выбор даты отправления и возврата через календарь (диапазон дат)
 - Раздельные поля "Departure" и "Return" с автоматическим заполнением
-- Кастомная кнопка сброса и подтверждения выбора дат в календаре
 - Адаптивная вёрстка на чистом HTML/CSS/JS
 
 ## Стек
@@ -23,11 +22,11 @@
 
 1. Склонируйте репозиторий:
    ```bash
-   git clone https://github.com/username/alps-bus-tickets.git
+   git clone https://github.com/vsokolow/wonders-landing
    ```
 2. Перейдите в папку проекта:
    ```bash
-   cd alps-bus-tickets
+   cd wonders-landing
    ```
 3. Откройте файл `index.html` в браузере — двойным кликом или через расширение вроде **Live Server** в VS Code.
 
