@@ -4,6 +4,9 @@ const navMenu = document.querySelector('.header nav');
 const departureInput = document.getElementById('departure');
 const returnInput = document.getElementById('returnDate');
 
+const counterMinus = document.getElementById('decrease-btn');
+const counterPlus = document.getElementById('increase-btn');
+const counterValue = document.getElementById('input');
 
 
 // ОТКРЫТИЕ-ЗАКРЫТИЕ ВЫПАДАЮЩЕГО МЕНЮ
@@ -12,7 +15,22 @@ menuIcon.addEventListener('click', () => {
 })
 
 // СЧЕТЧИК
+let cntValue = 1;
+counterValue.value = cntValue;
 
+counterMinus.addEventListener('click', () => {
+    if(cntValue > 1){
+        --cntValue;
+        counterValue.value = cntValue;
+    }
+});
+
+counterPlus.addEventListener('click', () => {
+    if(cntValue < 12){
+        ++cntValue;
+        counterValue.value = cntValue;
+    }
+});
 
 // DATE PICKER
 const picker = flatpickr(departureInput, {
