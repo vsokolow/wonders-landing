@@ -1,12 +1,15 @@
 const menuIcon = document.querySelector('.menu_icon');
 const navMenu = document.querySelector('.header nav');
 
-const departureInput = document.getElementById('departure');
-const returnInput = document.getElementById('returnDate');
-
 const counterMinus = document.getElementById('decrease-btn');
 const counterPlus = document.getElementById('increase-btn');
 const counterValue = document.getElementById('input');
+
+const ticketsForm = document.querySelector('#tickets form');
+
+const departureInput = document.getElementById('departure');
+const returnInput = document.getElementById('returnDate');
+
 
 
 // ОТКРЫТИЕ-ЗАКРЫТИЕ ВЫПАДАЮЩЕГО МЕНЮ
@@ -32,11 +35,33 @@ counterPlus.addEventListener('click', () => {
     }
 });
 
+// ФОРМА
+ticketsForm.addEventListener('submit', event => {
+  event.preventDefault();
+  let formData = new FormData(ticketsForm);
+  const data = {
+                  ...Object.fromEntries(formData), 
+                  people_cnt: cntValue,
+                  date_depart: departureInput.value,
+                  date_back: returnInput.value,
+               }
+  console.log(data);
+})
+
+// const newTrip = {
+//   trip_type: 'round',
+//   people_cnt: 4,
+//   city_departure: "Berlin",
+//   city_arrival: "Madrid",
+//   date_depart: "",
+//   date_back: ""
+// }
+
 // DATE PICKER
 const picker = flatpickr(departureInput, {
     mode: "range",
     showMonths: 2,
-    locale: "ru",
+    // locale: "eu",
     dateFormat: "d.m.Y",
     closeOnSelect: false,   // не закрываем сразу — закрытие по кнопке Apply
     minDate: "today",
