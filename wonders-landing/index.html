@@ -60,12 +60,20 @@
                             <div>
                                 <label>
                                     Departure
-                                    <input type="text" placeholder="Your City/Station">
+                                    <div class="autocomplete-wrapper"> <!--обёртка для позиционирования выпадающего списка -->
+                                        <input id="departureCity" type="text" placeholder="Your City/Station" autocomplete="off"> <!--id для автодополнения -->
+                                        <ul class="autocomplete-list" id="departureCityList"></ul> <!--контейнер под варианты станций -->
+                                    </div>
+                                    <span class="field-error" id="departureCityError"></span> <!--текст ошибки валидации -->
                                 </label>
 
                                 <label>
                                     Arrival
-                                    <input type="text" placeholder="Where to?">
+                                    <div class="autocomplete-wrapper"> 
+                                        <input id="arrivalCity" type="text" placeholder="Where to?" autocomplete="off"> 
+                                        <ul class="autocomplete-list" id="arrivalCityList"></ul> 
+                                    </div>
+                                    <span class="field-error" id="arrivalCityError"></span> 
                                 </label>
                             </div>
 
@@ -75,6 +83,7 @@
                                     <input id="departure" type="text" placeholder="Depart">
                                     <input id="returnDate" type="text" placeholder="Return">
                                 </div>
+                                <span class="field-error" id="dateError"></span> <!--текст ошибки валидации дат -->
                             </div>
 
                             <button>Find My Alpine Ride</button>

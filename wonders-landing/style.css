@@ -716,9 +716,6 @@ footer ul {
     }
 
 
-
-    /* tickets доделать под мобилку */
-
      #tickets {
         padding: 0;
     }
@@ -956,6 +953,43 @@ footer ul {
     .mobile-hide {
         display: none;
     }
-    
 }
+
+/* AUTOCOMPLETE & VALIDATION */
+
+.autocomplete-wrapper {
+    position: relative; /*точка отсчёта для абсолютного позиционирования выпадающего списка */
+}
+
+.autocomplete-list {
+    display: none; /*список скрыт, пока нет совпадений (открывается через класс .is-open) */
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    list-style: none;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(32, 32, 32, 0.15);
+    max-height: 240px;
+    overflow-y: auto; /*скролл, если совпадений много */
+}
+
+.autocomplete-list.is-open {
+    display: block; /*класс, который script.js навешивает при наличии совпадений */
+}
+
+.autocomplete-list li {
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--primary-black);
+    cursor: pointer;
+}
+
+.autocomplete-list li:hover {
+    background-color: var(--bg-gray); /*подсветка варианта при наведении */
+}
+
 
