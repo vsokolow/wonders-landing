@@ -15,6 +15,10 @@ const arrivalCityInput = document.getElementById('arrivalCity');
 const departureCityList = document.getElementById('departureCityList');
 const arrivalCityList = document.getElementById('arrivalCityList');
 
+//ИСПРАВЛЕНО: эта строка отсутствовала - tripTypeGroup использовалась в validateTicketsForm,
+//но нигде не была объявлена, из-за чего при сабмите падал ReferenceError и форма переставала работать
+const tripTypeGroup = document.getElementById('tripTypeGroup');
+
 
 
                             // ОТКРЫТИЕ-ЗАКРЫТИЕ ВЫПАДАЮЩЕГО МЕНЮ
@@ -113,7 +117,8 @@ const Stations = [
 ];
 
 // инициализируем автодополнение для одного инпута:
-function initAutocomplete(input, listEl) { 
+//ИСПРАВЛЕНО: добавлен параметр errorId, чтобы clearFieldError знала, какой span очищать при клике по подсказке
+function initAutocomplete(input, listEl, errorId) { 
     input.addEventListener('input', () => { //слушаем ввод текста, чтобы фильтровать список на лету
         const query = input.value.trim().toLowerCase() //нормализуем регистр для сравнения
         listEl.innerHTML = ''; //очищаем предыдущие варианты перед новым рендером
@@ -140,7 +145,7 @@ function initAutocomplete(input, listEl) {
                 input.value = station; //подставляем выбранную станцию в поле
                 listEl.innerHTML = '';
                 listEl.classList.remove('is-open');
-                clearFieldError(input); //убираем ошибку валидации при выборе станции
+                clearFieldError(input, errorId); //ИСПРАВЛЕНО: передаём errorId, иначе ошибка не очищалась
             });
             listEl.append(li);
         });
@@ -156,8 +161,10 @@ function initAutocomplete(input, listEl) {
 }
 
 //подключаем автодополнение к обоим полям формы
-initAutocomplete(departureCityInput, departureCityList);
-initAutocomplete(arrivalCityInput, arrivalCityList);
+//ИСПРАВЛЕНО: передаём id соответствующего span с ошибкой
+initAutocomplete(departureCityInput, departureCityList, 'departureCityError');
+initAutocomplete(arrivalCityInput, arrivalCityList, 'arrivalCityError');
+
 
                         //ВАЛИДАЦИЯ ФОРМЫ
 
@@ -177,16 +184,37 @@ function showFieldError(input, errorId, message) {
 }
 
 //убираем подсветку ошибки у поля при повторном вводе/выборе значения
-function clearFieldError(input) {
+//ИСПРАВЛЕНО: раньше контейнер ошибки искался через input.closest('label')||input.closest('div'),
+//из-за чего для полей Depart/Return ближайшим div-ом оказывался .depart-return (без span.field-error внутри),
+//и текст ошибки никогда не очищался. Теперь errorId передаётся явно, как и в showFieldError.
+function clearFieldError(input, errorId) {
     input.classList.remove('invalid');
-    const wrapperLabel = input.closest('label') || input.closest('div');
-    const errorEl = wrapperLabel ? wrapperLabel.querySelector('.field-error') : null;
-    if (errorEl) errorEl.textContent = '';
+    if (errorId) {
+        const errorEl = document.getElementById(errorId);
+        if (errorEl) errorEl.textContent = '';
+    }
 }
 
 //при ручном вводе в любое из проверяемых полей ошибка сразу сбрасывается
-[departureCityInput, arrivalCityInput, departureInput, returnInput].forEach(input => {
-    input.addEventListener('input', () => clearFieldError(input));
+//ИСПРАВЛЕНО: список дополнен явным errorId для каждого поля (раньше id не передавался)
+const fieldsWithErrors = [
+    { input: departureCityInput, errorId: 'departureCityError' },
+    { input: arrivalCityInput, errorId: 'arrivalCityError' },
+    { input: departureInput, errorId: 'dateError' },
+    { input: returnInput, errorId: 'dateError' },
+];
+
+fieldsWithErrors.forEach(({ input, errorId }) => {
+    input.addEventListener('input', () => clearFieldError(input, errorId));
+});
+
+//сбрасываем ошибку выбора типа поездки при клике по любой радиокнопке
+//ДОБАВЛЕНО: раньше при выборе Round trip/One Way текст ошибки tripTypeError не пропадал вообще
+ticketsForm.querySelectorAll('input[name="trip_type"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+        document.getElementById('tripTypeError').textContent = '';
+        tripTypeGroup.classList.remove('invalid');
+    });
 });
 
 //основная функция валидации формы поиска перед отправкой
@@ -202,6 +230,7 @@ function validateTicketsForm () {
     const tripTypeSelected = ticketsForm.querySelector('input[name="trip_type"]:checked');
     if (!tripTypeSelected) {
         document.getElementById('tripTypeError').textContent = 'Select trip type';
+        tripTypeGroup.classList.add('invalid'); //ИСПРАВЛЕНО: подсветка группы рамкой пропала при редактировании, вернул
         isValid = false;
     }
 
@@ -228,6 +257,17 @@ function validateTicketsForm () {
     const arrivalCity = arrivalCityInput.value.trim().toLowerCase();
     if (departureCity === arrivalCity) {
         showFieldError(arrivalCityInput, 'arrivalCityError', 'The arrival station must not be the same as the departure station');
+        isValid = false;
+    }
+
+    //ИСПРАВЛЕНО: эта проверка пропадала при редактировании - в задании явно требуется
+    //"Проверка даты (чтобы не была в прошлом)", а функция parseDisplayDate была объявлена, но не использовалась
+    const departDate = parseDisplayDate(departureInput.value.trim());
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (!departDate || departDate < today) {
+        showFieldError(departureInput, 'dateError', 'Departure date cannot be in the past');
         isValid = false;
     }
 

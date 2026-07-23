@@ -54,7 +54,8 @@
                                     <div>
                                         <button id="decrease-btn" type="button">                <img src="./assets/images/icons/Minus.png" alt="">
                                         </button>
-                                        <input id="input" type="readonly" value="1">
+                                        <!-- ИСПРАВЛЕНО: было type="readonly" (невалидный тип атрибута), вернул type="text" + атрибут readonly -->
+                                        <input id="input" type="text" value="1" readonly>
                                         <button id="increase-btn" type="button">
                                             <img src="./assets/images/icons/Plus.png" alt="plus">
                                         </button>
@@ -132,8 +133,6 @@
                 </div>
             </section>
 
-        </div>
-
         <section id="apps">
             <div class="wrapper">
                 <h2>Free downloads app now!</h2>
@@ -148,7 +147,8 @@
         <section id="faqs">
             <div class="wrapper">
                 <h2>FAQs.</h2>
-                <div class="faqs_container"></div>    
+                <div class="faqs_container"></div>
+            </div> <!-- ИСПРАВЛЕНО: этого закрывающего div не хватало - .wrapper оставался открытым до </section>, что ломало вложенность -->
         </section>
 
         <section id="contacts">     
