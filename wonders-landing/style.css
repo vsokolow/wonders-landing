@@ -992,4 +992,28 @@ footer ul {
     background-color: var(--bg-gray); /*подсветка варианта при наведении */
 }
 
+.field-error {
+    display: block;
+    min-height: 16px; /*держим высоту даже без текста, чтобы форма не "прыгала" при появлении ошибки */
+    padding-top: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #e6392f; /*цвет текста ошибки */
+}
+
+input.invalid {
+    outline: 2px solid #e6392f; /*подсветка невалидного поля, класс навешивается из script.js */
+}
+ 
+/*расположение радиокнопок в ряд (раньше это делалось неявно через inline-label) */
+.trip-type-group {
+    display: flex; 
+    gap: 24px;
+}
+ 
+.trip-type-group.invalid {
+    outline: 2px solid #e6392f; /*подсветка группы радиокнопок при отсутствии выбора */
+    border-radius: 8px;
+}
+
 

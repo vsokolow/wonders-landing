@@ -35,14 +35,19 @@
                         <p>We sell tickets to the best seats in the house – houses on wheels, that is!  Get ready for jaw-dropping views without breaking a sweat.</p>
                         <form>
                             <div>
-                                <label>
+                                <div>
+                                    <div class="trip-type-group" id="tripTypeGroup">
+                                        <label>
                                     <input type="radio" name="trip_type" value="round">
                                     Round trip
-                                </label>
-                                <label>
+                                        </label>
+                                        <label>
                                     <input type="radio" name="trip_type" value="one_way">
                                     One Way
-                                </label>
+                                        </label>
+                                    </div>
+                                    <span class="field-error" id="tripTypeError"></span><!--текст ошибки типа поездки 'Select trip type' -->
+                                </div>
 
                                 <div class="counter_block">
                                     <img src="./assets/images/icons/person solid.png" alt="person_icon">
@@ -64,7 +69,7 @@
                                         <input id="departureCity" type="text" placeholder="Your City/Station" autocomplete="off"> <!--id для автодополнения -->
                                         <ul class="autocomplete-list" id="departureCityList"></ul> <!--контейнер под варианты станций -->
                                     </div>
-                                    <span class="field-error" id="departureCityError"></span> <!--текст ошибки валидации -->
+                                    <span class="field-error" id="departureCityError"></span> <!--текст ошибки валидации 'Select the departure station'-->
                                 </label>
 
                                 <label>
@@ -73,7 +78,7 @@
                                         <input id="arrivalCity" type="text" placeholder="Where to?" autocomplete="off"> 
                                         <ul class="autocomplete-list" id="arrivalCityList"></ul> 
                                     </div>
-                                    <span class="field-error" id="arrivalCityError"></span> 
+                                    <span class="field-error" id="arrivalCityError"></span> <!--текст ошибки валидации 'Select an arrival station'--> 
                                 </label>
                             </div>
 
@@ -83,7 +88,7 @@
                                     <input id="departure" type="text" placeholder="Depart">
                                     <input id="returnDate" type="text" placeholder="Return">
                                 </div>
-                                <span class="field-error" id="dateError"></span> <!--текст ошибки валидации дат -->
+                                <span class="field-error" id="dateError"></span> <!--текст ошибки валидации дат 'Select travel dates' -->
                             </div>
 
                             <button>Find My Alpine Ride</button>

@@ -44,27 +44,6 @@ counterPlus.addEventListener('click', () => {
 
                          // ФОРМА
 
-ticketsForm.addEventListener('submit', event => {
-  event.preventDefault();
-  let formData = new FormData(ticketsForm);
-  const data = {
-                  ...Object.fromEntries(formData), 
-                  people_cnt: cntValue,
-                  date_depart: departureInput.value,
-                  date_back: returnInput.value,
-               }
-  console.log(data);
-})
-
-// const newTrip = {
-//   trip_type: 'round',
-//   people_cnt: 4,
-//   city_departure: "Berlin",
-//   city_arrival: "Madrid",
-//   date_depart: "",
-//   date_back: ""
-// }
-
 // Список станций для фильтрации при вводе в поля Departure/Arrival
 const Stations = [
     // Switzerland
@@ -180,6 +159,104 @@ function initAutocomplete(input, listEl) {
 initAutocomplete(departureCityInput, departureCityList);
 initAutocomplete(arrivalCityInput, arrivalCityList);
 
+                        //ВАЛИДАЦИЯ ФОРМЫ
+
+//парсим дату вида "d.m.Y" (flatpickr) в объект Date
+function parseDisplayDate(str) {
+    const [day, month, year] = str.split('.').map(Number);
+    if (!day || !month || !year) return null;
+    return new Date(year, month - 1, day);
+}
+
+
+//показываем текст ошибки под конкретным полем и подсвечиваем само поле
+function showFieldError(input, errorId, message) {
+    const errorEl = document.getElementById(errorId);
+    if (errorEl) errorEl.textContent = message;
+    input.classList.add('invalid');
+}
+
+//убираем подсветку ошибки у поля при повторном вводе/выборе значения
+function clearFieldError(input) {
+    input.classList.remove('invalid');
+    const wrapperLabel = input.closest('label') || input.closest('div');
+    const errorEl = wrapperLabel ? wrapperLabel.querySelector('.field-error') : null;
+    if (errorEl) errorEl.textContent = '';
+}
+
+//при ручном вводе в любое из проверяемых полей ошибка сразу сбрасывается
+[departureCityInput, arrivalCityInput, departureInput, returnInput].forEach(input => {
+    input.addEventListener('input', () => clearFieldError(input));
+});
+
+//основная функция валидации формы поиска перед отправкой
+function validateTicketsForm () {
+    let isValid = true;
+
+    //сброс ошибки типа поездки
+    document.getElementById('tripTypeError').textContent = '';
+    tripTypeGroup.classList.remove('invalid');
+
+
+                //Проверка заполненности полей
+    const tripTypeSelected = ticketsForm.querySelector('input[name="trip_type"]:checked');
+    if (!tripTypeSelected) {
+        document.getElementById('tripTypeError').textContent = 'Select trip type';
+        isValid = false;
+    }
+
+    if (!departureCityInput.value.trim()) {
+        showFieldError(departureCityInput, 'departureCityError', 'Select the departure station');
+        isValid = false;
+    }
+
+    if (!arrivalCityInput.value.trim()) {
+        showFieldError(arrivalCityInput, 'arrivalCityError', 'Select an arrival station');
+        isValid = false;
+    }
+
+    if (!departureInput.value.trim() || !returnInput.value.trim()) {
+        showFieldError(departureInput, 'dateError', 'Select travel dates');
+        isValid = false;
+    }
+
+    // Если базовая заполненность не пройдена - дальше не проверяем
+    if (!isValid) return false;
+
+                    //Проверка совпадения выбора станций 
+    const departureCity = departureCityInput.value.trim().toLowerCase();
+    const arrivalCity = arrivalCityInput.value.trim().toLowerCase();
+    if (departureCity === arrivalCity) {
+        showFieldError(arrivalCityInput, 'arrivalCityError', 'The arrival station must not be the same as the departure station');
+        isValid = false;
+    }
+
+    return isValid;
+
+}
+
+// Обработчик submit дополнен вызовом валидации и редиректом вместо простого console.log
+ticketsForm.addEventListener('submit', event => {
+  event.preventDefault();
+
+    if (!validateTicketsForm()) return; //прерываем отправку, если форма не прошла валидацию
+
+  let formData = new FormData(ticketsForm);
+  const data = {
+    ...Object.fromEntries(formData), 
+    people_cnt: cntValue,
+    city_departure: departureCityInput.value,
+    city_arrival: arrivalCityInput.value,
+    date_depart: departureInput.value,
+    date_back: returnInput.value,
+    };
+  console.log(data);
+
+//Имитация перехода на страницу со списком автобусов.
+// Данные поиска передаём через query-параметры, чтобы bus-list.html при необходимости мог их прочитать через URLSearchParams.
+    const query = new URLSearchParams(data).toString();
+    window.location.href = `bus-list.html?${query}`;
+});
 
 
                         // DATE PICKER
@@ -248,8 +325,8 @@ function addFooter(instance) {
       instance.close();
     });
 
-    // footer.appendChild(resetBtn);
-    // footer.appendChild(applyBtn);
+    footer.appendChild(resetBtn);
+    footer.appendChild(applyBtn);
     instance.calendarContainer.appendChild(footer);
 }
 
